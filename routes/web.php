@@ -8,7 +8,10 @@ use App\Http\Controllers\Admin\KucingController as AdminKucingController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Customer\HomeController as CustomerHomeController;
-use App\Http\Controllers\GroomingController;
+use App\Http\Controllers\Customer\AboutController as CustomerAboutController;
+use App\Http\Controllers\Customer\ServiceController as CustomerServiceController;
+use App\Http\Controllers\Customer\GroomingController as CustomerGroomingController;
+use App\Http\Controllers\Customer\PetHotelController as CustomerPetHotelController;
 use Illuminate\Auth\Events\Login;
 
 /*
@@ -30,14 +33,20 @@ Auth::routes();
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
+//landing
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/grooming', [GroomingController::class, 'index'])->name('grooming');
-Route::get('/pethotel', [AboutController::class, 'index'])->name('pethotel');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/service', [ServiceController::class, 'index'])->name('service');
 
+//customer
 Route::get('/customer-home', [CustomerHomeController::class, 'index'])->name('home-customer');
+Route::get('/customer-about', [CustomerAboutController::class, 'index'])->name('about-customer');
+Route::get('/customer-service', [CustomerServiceController::class, 'index'])->name('service-customer');
+Route::get('/customer-grooming', [CustomerGroomingController::class, 'index'])->name('grooming-customer');
+Route::get('/customer-pethotel', [CustomerPetHotelController::class, 'index'])->name('pethotel-customer');
 
+
+//admin
 Route::get('/admin-home', [AdminHomeController::class, 'index'])->name('home-admin');
 
 Route::get('/kucing', [AdminKucingController::class, 'index'])->name('kucing');

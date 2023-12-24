@@ -19,7 +19,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
+            <div id="content"  style="background-color: #FCECDD;">
 
                 <!-- Topbar -->
                 @include('admin/template/topbar')
@@ -38,7 +38,7 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data Users</h6>
+                                    <h6 class="m-0 font-weight-bold" style="color: #FF6701;">Data Users</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -70,12 +70,12 @@
                                                     <td>{{ $user->role->name ?? 'N/A' }}</td>
                                                     <td>
                                                         <!-- Edit Icon - Trigger Modal -->
-                                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editUserModal{{ $user->id }}" data-user-id="{{ $user->id }}" data-user-name="{{ $user->name }}" data-user-email="{{ $user->email }}" data-user-role-id="{{ optional($user->role)->id }}">
-                                                            <i class="fas fa-pencil-alt"></i>
+                                                        <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#editUserModal{{ $user->id }}" data-user-id="{{ $user->id }}" data-user-name="{{ $user->name }}" data-user-email="{{ $user->email }}" data-user-role-id="{{ optional($user->role)->id }}" style="background-color: #FF6701;">
+                                                            <i class="fas fa-pencil-alt text-white"></i>
                                                         </button>
 
                                                         <!-- Delete Icon -->
-                                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteUserModal{{ $user->id }}">
+                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteUserModal{{ $user->id }}">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </button>
                                                     </td>
@@ -94,7 +94,7 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Add User</h6>
+                                    <h6 class="m-0 font-weight-bold" style="color: #FF6701;">Add User</h6>
                                 </div>
                                 <div class="card-body">
                                     <!-- Your form goes here -->
@@ -139,7 +139,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Add User</button>
+                                        <button type="submit" class="btn" style="background-color: #FF6701; color: #FFFFFF;">Add User</button>
                                     </form>
                                 </div>
                             </div>
@@ -227,7 +227,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer" style="background-color: #FCECDD;">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2020</span>

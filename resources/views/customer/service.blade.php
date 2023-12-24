@@ -3,13 +3,13 @@
 
 <head>
     <title>Modern Business - Start Bootstrap Template</title>
-    @include('template/landing/head')
+    @include('customer/template/head')
 </head>
 
 <body class="d-flex flex-column">
     <main class="flex-shrink-0">
         <!-- Navigation-->
-                    @include('template/landing/navlink')
+                    @include('customer/template/navlink')
         <!-- Pricing section-->
         <section class="bg-light py-5">
             <div class="container px-5 my-5">
@@ -169,9 +169,9 @@
     </main>
     <!-- Footer-->
     <footer class="bg-dark py-4 mt-auto">
-    @include('template/landing/footer')
+    @include('customer/template/footer')
     </footer>
-    @include('template/landing/script')
+    @include('customer/template/script')
 </body>
 
 </html>

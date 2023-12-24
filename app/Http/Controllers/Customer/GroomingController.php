@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Customer;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class GroomingController extends Controller
 {
     public function index()
     {
-        return view('grooming');
+        return view('customer.grooming');
     }
 }
