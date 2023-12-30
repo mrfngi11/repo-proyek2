@@ -168,7 +168,7 @@
         </section>
     </main>
     <!-- Footer-->
-    <footer class="bg-dark py-4 mt-auto">
+    <footer class="py-4 mt-auto" style="background-color: #FF6701;">
     @include('customer/template/footer')
     </footer>
     @include('customer/template/script')

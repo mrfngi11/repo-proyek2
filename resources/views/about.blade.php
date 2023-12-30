@@ -93,7 +93,7 @@
         </section>
     </main>
     <!-- Footer-->
-    <footer class="bg-dark py-4 mt-auto">
+    <footer class="py-4 mt-auto" style="background-color: #FF6701;">
     @include('template/landing/footer')
     </footer>
     @include('template/landing/script')
