@@ -25,17 +25,10 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link text-dark" href="{{ route('user') }}">
             <i class="fas fa-fw fa-users"></i>
-            <span>Users</span>
+            <span>User</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-                <a class="collapse-item" href="{{route('user')}}">Insert User</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
-            </div>
-        </div>
     </li>
 
     <!-- <hr class="sidebar-divider"> -->
@@ -45,6 +38,33 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Kucing</span></a>
     </li>
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="{{route('kamar')}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Kamar</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="{{route('grooming')}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Grooming</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Informasi</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{route('pesan')}}">Informasi Pesanan</a>
+                <a class="collapse-item" href="{{route('reservasi')}}">Infromasi Reservasi</a>
+            </div>
+        </div>
+    </li>
+
+    <hr class="sidebar-divider d-none d-md-block">
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

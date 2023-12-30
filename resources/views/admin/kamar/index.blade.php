@@ -29,7 +29,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800 mb-4">Data Kucing</h1>
+                    <h1 class="h3 mb-2 text-gray-800 mb-4">Data Kamar</h1>
 
                     <div class="row">
 

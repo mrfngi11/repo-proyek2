@@ -13,7 +13,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('grooming-customer') }}">Grooming</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('pethotel-customer') }}">Pet Hotel</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('about-customer') }}">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('service-customer') }}">Service</a></li>
+                <!-- <li class="nav-item"><a class="nav-link" href="{{ route('service-customer') }}">Service</a></li> -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Info</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
@@ -28,10 +28,6 @@
                             </a>
                         </li>
                         <hr>
-                        <li><a class="dropdown-item" href="">
-                                <i class="fas fa-user fa-sm fa-fw text-primary"></i>
-                                <span>Akun</span>
-                            </a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">

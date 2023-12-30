@@ -51,6 +51,8 @@ Route::get('/admin-home', [AdminHomeController::class, 'index'])->name('home-adm
 
 Route::get('/kucing', [AdminKucingController::class, 'index'])->name('kucing');
 Route::post('/kucing', [AdminKucingController::class, 'store'])->name('kucing.add');
+Route::put('/kucing/{kucing}', [AdminKucingController::class, 'update'])->name('kucing.update');
+Route::delete('/kucing/{kucing}', [AdminKucingController::class, 'destroy'])->name('kucing.destroy');
 
 Route::get('/user', [AdminUserController::class, 'index'])->name('user');
 Route::post('/user', [AdminUserController::class, 'store'])->name('user.add');

@@ -14,6 +14,7 @@ class Kucing extends Model
     protected $table = 'kucing';
 
     protected $fillable = [
+        'kucing_nama',
         'id_kondisi',
         'id_jenis',
     ];

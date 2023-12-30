@@ -70,12 +70,12 @@
                                                     <td>{{ $user->role->name ?? 'N/A' }}</td>
                                                     <td>
                                                         <!-- Edit Icon - Trigger Modal -->
-                                                        <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#editUserModal{{ $user->id }}" data-user-id="{{ $user->id }}" data-user-name="{{ $user->name }}" data-user-email="{{ $user->email }}" data-user-role-id="{{ optional($user->role)->id }}" style="background-color: #FF6701;">
+                                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editUserModal{{ $user->id }}" data-user-id="{{ $user->id }}" data-user-name="{{ $user->name }}" data-user-email="{{ $user->email }}" data-user-role-id="{{ optional($user->role)->id }}">
                                                             <i class="fas fa-pencil-alt text-white"></i>
                                                         </button>
 
                                                         <!-- Delete Icon -->
-                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteUserModal{{ $user->id }}">
+                                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteUserModal{{ $user->id }}">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </button>
                                                     </td>
@@ -188,7 +188,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Update User</button>
+                                    <button type="submit" class="btn" style="background-color: #FF6701; color: #FFFFFF;">Update User</button>
                                 </form>
                             </div>
                         </div>
@@ -202,19 +202,19 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <p>Are you sure you want to delete this user?</p>
+                                <p>Ingin menghapus data "{{ $user->name }}" dari table?</p>
                             </div>
                             <div class="modal-footer">
                                 <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete User</button>
+                                    <button type="submit" class="btn btn-info">Delete User</button>
                                 </form>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             </div>
