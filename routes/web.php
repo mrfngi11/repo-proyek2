@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController as AboutController;
-use App\Http\Controllers\ServiceController as ServiceController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\KucingController as AdminKucingController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\KamarController as AdminKamarController;
+use App\Http\Controllers\Admin\GroomingController as AdminGroomingController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Customer\HomeController as CustomerHomeController;
 use App\Http\Controllers\Customer\AboutController as CustomerAboutController;
@@ -36,7 +37,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 //landing
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
-Route::get('/service', [ServiceController::class, 'index'])->name('service');
+// Route::get('/service', [ServiceController::class, 'index'])->name('service');
 
 //customer
 Route::get('/customer-home', [CustomerHomeController::class, 'index'])->name('home-customer');
@@ -58,3 +59,13 @@ Route::get('/user', [AdminUserController::class, 'index'])->name('user');
 Route::post('/user', [AdminUserController::class, 'store'])->name('user.add');
 Route::put('/user/{user}', [AdminUserController::class, 'update'])->name('user.update');
 Route::delete('/user/{user}', [AdminUserController::class, 'destroy'])->name('user.destroy');
+
+Route::get('/kamar', [AdminKamarController::class, 'index'])->name('kamar');
+Route::post('/kamar', [AdminKamarController::class, 'store'])->name('kamar.add');
+Route::put('/kamar/{kamar}', [AdminKamarController::class, 'update'])->name('kamar.update');
+Route::delete('/kamar/{kamar}', [AdminKamarController::class, 'destroy'])->name('kamar.destroy');
+
+Route::get('/grooming', [AdminGroomingController::class, 'index'])->name('grooming');
+Route::post('/grooming', [AdminGroomingController::class, 'store'])->name('grooming.add');
+Route::put('/grooming/{grooming}', [AdminGroomingController::class, 'update'])->name('grooming.update');
+Route::delete('/grooming/{grooming}', [AdminGroomingController::class, 'destroy'])->name('grooming.destroy');

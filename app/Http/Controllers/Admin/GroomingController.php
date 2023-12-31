@@ -4,22 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Kamar;
+use App\Models\Grooming;
 use Illuminate\Support\Facades\File;
 
-class KamarController extends Controller
+class GroomingController extends Controller
 {
     public function index()
     {
-        $dataKamar = Kamar::all();
-        return view('admin.kamar.index', compact('dataKamar'));
+        $dataGrooming = Grooming::all();
+        return view('admin.grooming.index', compact('dataGrooming'));
     }
 
     public function store(Request $request)
     {
         // Validate the request data
         $request->validate([
-            'no_kamar' => 'required|string|max:3',
             'image' => 'nullable|mimes:png,jpeg,jpg|max:2048',
             'deskripsi' => 'required|string|max:255',
             'harga' => 'required|integer',
@@ -28,27 +27,23 @@ class KamarController extends Controller
         $image = $request->file('image');
         $filename = date('Y-m-d') . $image->getClientOriginalName();
 
-        $image->move(public_path('kamar-image'), $filename);
+        $image->move(public_path('grooming-image'), $filename);
 
-        $data['no_kamar'] = $request->no_kamar;
         $data['image'] = $filename;
         $data['deskripsi'] = $request->deskripsi;
         $data['harga'] = $request->harga;
 
         // Create a new user
-        $kamar = Kamar::create($data);
-
-
+        $kamar = Grooming::create($data);
 
         // Redirect to the index page or show a success message
-        return redirect()->route('kamar')->with('success', 'User created successfully');
+        return redirect()->route('grooming')->with('success', 'User created successfully');
     }
 
-    public function update(Request $request, Kamar $kamar)
+    public function update(Request $request, Grooming $grooming)
     {
         // Validate the request data
         $request->validate([
-            'no_kamar' => 'required|string|max:3',
             'deskripsi' => 'required|string|max:255',
             'harga' => 'required|integer',
         ]);
@@ -61,35 +56,35 @@ class KamarController extends Controller
             $image = $request->file('image');
             $filename = date('Y-m-d') . $image->getClientOriginalName();
 
-            $image->move(public_path('kamar-image'), $filename);
+            $image->move(public_path('grooming-image'), $filename);
 
-            $data_image = Kamar::where('no_kamar', $kamar->no_kamar)->first();
-            File::delete(public_path('kamar-image') . '/' . $data_image->image);
+            $data_image = Grooming::where('id', $grooming->id)->first();
+            File::delete(public_path('grooming-image') . '/' . $data_image->image);
 
             $data['image'] = $filename;
         }
 
-        $data['no_kamar'] = $request->no_kamar;
         $data['deskripsi'] = $request->deskripsi;
         $data['harga'] = $request->harga;
 
         // Update the user
-        Kamar::where('no_kamar', $kamar->no_kamar)->update($data);
+        Grooming::where('id', $grooming->id)->update($data);
 
         // Redirect with success message
-        return redirect()->route('kamar')->with('success', 'Kucing updated successfully');
+        return redirect()->route('grooming')->with('success', 'Grooming updated successfully');
     }
 
-    public function destroy(Kamar $kamar)
+    public function destroy(Grooming $grooming)
     {
         // Delete the user
-        $data = Kamar::where('no_kamar', $kamar->no_kamar)->first();
-        File::delete(public_path('kamar-image') . '/' . $data->image);
+        $data = Grooming::where('id', $grooming->id)->first();
+        File::delete(public_path('grooming-image') . '/' . $data->image);
 
-        Kamar::where('no_kamar', $kamar->no_kamar)->delete();
+        Grooming::where('id', $grooming->id)->delete();
 
 
         // Redirect to the index page or show a success message
-        return redirect()->route('kamar')->with('success', 'Kucing deleted successfully');
+        return redirect()->route('grooming')->with('success', 'Kucing deleted successfully');
     }
+
 }

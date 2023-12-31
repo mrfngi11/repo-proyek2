@@ -58,8 +58,8 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('pesan')}}">Informasi Pesanan</a>
-                <a class="collapse-item" href="{{route('reservasi')}}">Infromasi Reservasi</a>
+                <a class="collapse-item" href="{{route('kamar')}}">Informasi Pesanan</a>
+                <a class="collapse-item" href="{{route('kamar')}}">Infromasi Reservasi</a>
             </div>
         </div>
     </li>

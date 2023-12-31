@@ -28,4 +28,25 @@ class Kucing extends Model
     {
         return $this->belongsTo(Kondisi::class, 'id_kondisi');
     }
+
+    public function kamar()
+    {
+        return $this->belongsToMany(Kamar::class);
+    }
+
+    public function grooming()
+    {
+        return $this->belongsToMany(Grooming::class);
+    }
+
+    public function pesan()
+    {
+        return $this->belongsToMany(Pesan::class);
+    }
+
+    public function reservasi()
+    {
+        return $this->belongsToMany(Reservasi::class);
+    }
+
 }
