@@ -9,22 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('reservasi', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_kucing')->nullable();
-            $table->foreign('id_kucing')->references('id')->on('kucing');
+            $table->date('check_in');
+            $table->date('check_out');
+            $table->integer('jumlah_kucing')->default(1);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::table('reservasi', function (Blueprint $table) {
-            $table->dropForeign(['id_kucing']);
-            $table->dropColumn('id_kucing');
+            $table->dropColumn(['check_in', 'check_out', 'jumlah_kucing']);
         });
     }
+
 };

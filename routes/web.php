@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController as AboutController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
-use App\Http\Controllers\Admin\KucingController as AdminKucingController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\KamarController as AdminKamarController;
 use App\Http\Controllers\Admin\GroomingController as AdminGroomingController;
+use App\Http\Controllers\Admin\PesanController as AdminPesanController;
+use App\Http\Controllers\Admin\ReservasiController as AdminReservasiController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Customer\HomeController as CustomerHomeController;
 use App\Http\Controllers\Customer\AboutController as CustomerAboutController;
@@ -50,11 +51,6 @@ Route::get('/customer-pethotel', [CustomerPetHotelController::class, 'index'])->
 //admin
 Route::get('/admin-home', [AdminHomeController::class, 'index'])->name('home-admin');
 
-Route::get('/kucing', [AdminKucingController::class, 'index'])->name('kucing');
-Route::post('/kucing', [AdminKucingController::class, 'store'])->name('kucing.add');
-Route::put('/kucing/{kucing}', [AdminKucingController::class, 'update'])->name('kucing.update');
-Route::delete('/kucing/{kucing}', [AdminKucingController::class, 'destroy'])->name('kucing.destroy');
-
 Route::get('/user', [AdminUserController::class, 'index'])->name('user');
 Route::post('/user', [AdminUserController::class, 'store'])->name('user.add');
 Route::put('/user/{user}', [AdminUserController::class, 'update'])->name('user.update');
@@ -69,3 +65,15 @@ Route::get('/grooming', [AdminGroomingController::class, 'index'])->name('groomi
 Route::post('/grooming', [AdminGroomingController::class, 'store'])->name('grooming.add');
 Route::put('/grooming/{grooming}', [AdminGroomingController::class, 'update'])->name('grooming.update');
 Route::delete('/grooming/{grooming}', [AdminGroomingController::class, 'destroy'])->name('grooming.destroy');
+
+Route::get('/pesan', [AdminPesanController::class, 'index'])->name('pesan');
+Route::get('/pesan/add', [AdminPesanController::class, 'add'])->name('pesan.add');
+Route::post('/pesan', [AdminPesanController::class, 'store'])->name('pesan.store');
+Route::put('/pesan/{pesan}', [AdminPesanController::class, 'update'])->name('pesan.update');
+Route::delete('/pesan/{pesan}', [AdminPesanController::class, 'destroy'])->name('pesan.destroy');
+
+Route::get('/reservasi', [AdminReservasiController::class, 'index'])->name('reservasi');
+Route::get('/reservasi/add', [AdminReservasiController::class, 'add'])->name('reservasi.add');
+Route::post('/reservasi', [AdminReservasiController::class, 'store'])->name('reservasi.store');
+Route::put('/reservasi/{reservasi}', [AdminReservasiController::class, 'update'])->name('reservasi.update');
+Route::delete('/reservasi/{reservasi}', [AdminReservasiController::class, 'destroy'])->name('reservasi.destroy');

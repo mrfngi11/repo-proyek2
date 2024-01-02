@@ -19,16 +19,19 @@ class KamarController extends Controller
     {
         // Validate the request data
         $request->validate([
-            'no_kamar' => 'required|string|max:3',
+            'no_kamar' => 'required|string|max:15',
             'image' => 'nullable|mimes:png,jpeg,jpg|max:2048',
             'deskripsi' => 'required|string|max:255',
             'harga' => 'required|integer',
         ]);
 
-        $image = $request->file('image');
-        $filename = date('Y-m-d') . $image->getClientOriginalName();
 
-        $image->move(public_path('kamar-image'), $filename);
+        $image = $request->file('image');
+
+        if ($image) {
+            $filename = time() . '-' .  $image->getClientOriginalName();
+            $image->move(public_path('kamar-image'), $filename);
+        }
 
         $data['no_kamar'] = $request->no_kamar;
         $data['image'] = $filename;
@@ -48,7 +51,7 @@ class KamarController extends Controller
     {
         // Validate the request data
         $request->validate([
-            'no_kamar' => 'required|string|max:3',
+            'no_kamar' => 'required|string|max:15',
             'deskripsi' => 'required|string|max:255',
             'harga' => 'required|integer',
         ]);
@@ -58,8 +61,14 @@ class KamarController extends Controller
                 'image' => 'mimes:png,jpeg,jpg|max:2048'
             ]);
 
+            $oldImagePath = public_path('kamar-image') . '/' . $kamar->image;
+
+            if (file_exists($oldImagePath)) {
+                unlink($oldImagePath); // Hapus gambar lama jika ada
+            }
+
             $image = $request->file('image');
-            $filename = date('Y-m-d') . $image->getClientOriginalName();
+            $filename = time() . '-' . $image->getClientOriginalName();
 
             $image->move(public_path('kamar-image'), $filename);
 

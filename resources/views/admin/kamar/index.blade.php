@@ -188,13 +188,18 @@
 
                                     @if($kamar->image)
                                     <div class="form-group">
-                                        <img class="text-center" style="max-width: 150px; max-height: 150px;" src="{{ url('kamar-image'). '/' . $kamar->image }}">
+                                        <img class="text-center" style="max-width: 150px; max-height: 150px;" src="{{ url('kamar-image'). '/' . $kamar->image }}" alt="Current Image">
                                     </div>
                                     @endif
 
                                     <div class="form-group">
                                         <label for="image">Image</label>
-                                        <input type="file" class="form-control" id="image" name="image" value="{{ $kamar->image }}" required>
+                                        <input type="file" class="form-control" id="image" name="image" value="{{ $kamar->image }}" required="true">
+
+                                        <!-- Menampilkan nama file yang sudah diunggah (jika ada) -->
+                                        @if($kamar->image)
+                                        <p class="text-muted mt-2">Current Image: {{ $kamar->image }}</p>
+                                        @endif
                                     </div>
 
                                     <div class="form-group">
@@ -244,16 +249,6 @@
 
             </div>
             <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->

@@ -11,7 +11,7 @@
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link text-dark" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-home"></i>
             <span>Dashboard</span></a>
     </li>
 
@@ -34,34 +34,39 @@
     <!-- <hr class="sidebar-divider"> -->
 
     <li class="nav-item">
-        <a class="nav-link text-dark" href="{{route('kucing')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Kucing</span></a>
-    </li>
-
-    <li class="nav-item">
         <a class="nav-link text-dark" href="{{route('kamar')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-hotel"></i>
             <span>Kamar</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link text-dark" href="{{route('grooming')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-shower"></i>
             <span>Grooming</span></a>
     </li>
 
     <li class="nav-item">
         <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
+            <i class="fas fa-fw fa-info"></i>
             <span>Informasi</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('kamar')}}">Informasi Pesanan</a>
-                <a class="collapse-item" href="{{route('kamar')}}">Infromasi Reservasi</a>
+                <a class="collapse-item" href="{{route('pesan')}}">Informasi Pesanan</a>
+                <a class="collapse-item" href="{{route('reservasi')}}">Infromasi Reservasi</a>
             </div>
         </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="{{route('logout')}}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+            <i class="fas fa-fw fa-sign-out-alt"></i>
+            <span>{{ __('Logout') }}</span>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        </a>
     </li>
 
     <hr class="sidebar-divider d-none d-md-block">

@@ -18,11 +18,6 @@ class Kamar extends Model
         'image',
     ];
 
-    public function kucing()
-    {
-        return $this->belongsTo(Kucing::class, 'id_kucing');
-    }
-
     public function reservasi()
     {
         return $this->belongsToMany(Reservasi::class);

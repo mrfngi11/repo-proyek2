@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('grooming', function (Blueprint $table) {
-            $table->integer('no_grooming');
+        Schema::table('pesan', function (Blueprint $table) {
+            $table->dropColumn('status');
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('grooming', function (Blueprint $table) {
-            //
+        Schema::table('pesan', function (Blueprint $table) {
+            $table->string('status');
         });
     }
 };

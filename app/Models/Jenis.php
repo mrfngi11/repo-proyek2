@@ -11,8 +11,9 @@ class Jenis extends Model
 
     protected $table = 'jenis';
 
-    public function kucing()
+    public function pesan()
     {
-        return $this->belongsToMany(Kucing::class);
+        return $this->belongsToMany(Pesan::class);
     }
+
 }

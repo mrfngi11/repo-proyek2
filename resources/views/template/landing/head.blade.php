@@ -3,6 +3,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <!-- Favicon-->
+<link rel="shortcut icon" href="{{ asset('template/img/logo.png') }}" type="image/x-icon">
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />

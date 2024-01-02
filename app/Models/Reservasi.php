@@ -12,7 +12,11 @@ class Reservasi extends Model
     protected $table = 'reservasi';
 
     protected $fillable = [
-        'status'
+        'id_customer',
+        'id_kamar',
+        'jumlah_kucing',
+        'check_in',
+        'check_out',
     ];
 
     public function kamar()
@@ -23,10 +27,5 @@ class Reservasi extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'id_customer');
-    }
-
-    public function kucing()
-    {
-        return $this->belongsTo(Kucing::class, 'id_kucing');
     }
 }

@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('kamar', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_kucing')->nullable();
-            $table->foreign('id_kucing')->references('id')->on('kucing');
+        Schema::table('pesan', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_jenis')->nullable();
+            $table->foreign('id_jenis')->references('id')->on('jenis');
         });
     }
 
@@ -22,9 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('kamar', function (Blueprint $table) {
-            $table->dropForeign(['id_kucing']);
-            $table->dropColumn('id_kucing');
+        Schema::table('pesan', function (Blueprint $table) {
+            $table->dropForeign(['id_jenis']);
+            $table->dropColumn('id_jenis');
         });
     }
 };
