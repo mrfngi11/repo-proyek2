@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>SB Admin 2 - Blank</title>
+    <title>Hachi Petshop</title>
     @include('admin/template/head')
 </head>
 
@@ -116,7 +116,8 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-grooming @error('deskripsi') is-invalid @enderror" placeholder="Deskripsi" id="deskripsi" name="deskripsi" value="{{ old('deskripsi') }}" required autocomplete="deskripsi" autofocus>
+                                        <textarea class="form-control form-control-grooming @error('deskripsi') is-invalid @enderror" placeholder="Deskripsi" id="deskripsi" name="deskripsi" required autocomplete="deskripsi" autofocus>{{ old('deskripsi') }}</textarea>
+
 
                                             @error('deskripsi')
                                             <span class="invalid-feedback" role="alert">
@@ -180,7 +181,7 @@
 
                                     <div class="form-group">
                                         <label for="deskripsi">Deskripsi</label>
-                                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" value="{{ $grooming->deskripsi }}" required>
+                                        <textarea class="form-control" id="deskripsi" name="deskripsi" required>{{ $grooming->deskripsi }}</textarea>
                                     </div>
 
                                     <div class="form-group">

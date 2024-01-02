@@ -52,9 +52,13 @@ class PesanController extends Controller
         // Create a new user
         $pesan = Pesan::create($data);
 
-
+        if (auth()->user()->role->name == 'admin') {
+            return redirect()->route('pesan')->with('success', 'User created successfully');
+        }else {
+            return redirect()->route('home-customer')->with('success', 'User created successfully');
+        }
         // Redirect to the index page or show a success message
-        return redirect()->route('pesan')->with('success', 'User created successfully');
+        
     }
 
     public function update(Request $request, Pesan $pesan)

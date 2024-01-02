@@ -53,8 +53,14 @@ class GroomingController extends Controller
                 'image' => 'mimes:png,jpeg,jpg|max:2048'
             ]);
 
+            $oldImagePath = public_path('grooming-image') . '/' . $grooming->image;
+
+            if (file_exists($oldImagePath)) {
+                unlink($oldImagePath); // Hapus gambar lama jika ada
+            }
+
             $image = $request->file('image');
-            $filename = date('Y-m-d') . $image->getClientOriginalName();
+            $filename = time() . '-' . $image->getClientOriginalName();
 
             $image->move(public_path('grooming-image'), $filename);
 
@@ -86,5 +92,4 @@ class GroomingController extends Controller
         // Redirect to the index page or show a success message
         return redirect()->route('grooming')->with('success', 'Kucing deleted successfully');
     }
-
 }

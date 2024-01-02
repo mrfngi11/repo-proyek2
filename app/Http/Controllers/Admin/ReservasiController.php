@@ -46,9 +46,12 @@ class ReservasiController extends Controller
         // Create a new user
         $reservasi = Reservasi::create($data);
 
+        if (auth()->user()->role->name == 'admin') {
+            return redirect()->route('reservasi')->with('success', 'User created successfully');
+        }else {
+            return redirect()->route('home-customer')->with('success', 'User created successfully');
+        }
 
-        // Redirect to the index page or show a success message
-        return redirect()->route('reservasi')->with('success', 'User created successfully');
     }
 
     public function update(Request $request, Reservasi $reservasi)

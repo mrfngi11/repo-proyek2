@@ -44,8 +44,12 @@ Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/customer-home', [CustomerHomeController::class, 'index'])->name('home-customer');
 Route::get('/customer-about', [CustomerAboutController::class, 'index'])->name('about-customer');
 Route::get('/customer-service', [CustomerServiceController::class, 'index'])->name('service-customer');
-Route::get('/customer-grooming', [CustomerGroomingController::class, 'index'])->name('grooming-customer');
+
 Route::get('/customer-pethotel', [CustomerPetHotelController::class, 'index'])->name('pethotel-customer');
+Route::get('/customer-pethotel/{id}', [CustomerPetHotelController::class, 'detail']);
+
+Route::get('/customer-grooming', [CustomerGroomingController::class, 'index'])->name('grooming-customer');
+Route::get('/customer-grooming/{id}', [CustomerGroomingController::class, 'detail']);
 
 
 //admin

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Hachi Petshop</title>
     @include('customer/template/head')
 </head>
 

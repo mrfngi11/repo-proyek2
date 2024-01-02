@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>SB Admin 2 - Register</title>
+    <title>Hachi Petshop</title>
     @include('template/auth/head')
 
 </head>

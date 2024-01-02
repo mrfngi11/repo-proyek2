@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>SB Admin 2 - Login</title>
+    <title>Hachi Petshop</title>
     @include('template/auth/head')
 
 </head>
