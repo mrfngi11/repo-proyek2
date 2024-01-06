@@ -55,8 +55,9 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Nama Customer</th>
+                                                    <th>Nama Pemilik</th>
                                                     <th>No Kamar</th>
+                                                    <th>Tipe Kamar</th>
                                                     <th>Jumlah Kucing</th>
                                                     <th>Check In</th>
                                                     <th>Check Out</th>
@@ -66,8 +67,9 @@
                                             <tfoot>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Nama Customer</th>
+                                                    <th>Nama Pemilik</th>
                                                     <th>No Kamar</th>
+                                                    <th>Tipe Kamar</th>
                                                     <th>Jumlah Kucing</th>
                                                     <th>Check In</th>
                                                     <th>Check Out</th>
@@ -80,6 +82,7 @@
                                                     <td>{{ $key + 1 }}</td>
                                                     <td>{{ optional($reservasi->user)->name }}</td>
                                                     <td>{{ optional($reservasi->kamar)->no_kamar }}</td>
+                                                    <td>{{ optional($reservasi->tipe)->tipe_kamar }}</td>
                                                     <td>{{ $reservasi->jumlah_kucing }}</td>
                                                     <td>{{ $reservasi->check_in }}</td>
                                                     <td>{{ $reservasi->check_out }}</td>
@@ -98,6 +101,7 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                        {{ $dataReservasi->links() }}
                                     </div>
                                 </div>
                             </div>
@@ -142,6 +146,19 @@
                                                     @foreach($dataKamar as $kamar)
                                                     <option value="{{ $kamar->id }}" {{ old('id_kamar', isset($reservasi) ? $reservasi->id_kamar : null) == $kamar->id ? 'selected' : '' }}>
                                                         {{ $kamar->no_kamar }}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                            <!-- Form fields for editing user data -->
+                                            <div class="form-group">
+                                                <label for="id_tipe">Tipe</label>
+                                                <select name="id_tipe" id="id_tipe" class="form-control form-control-reservasi">
+                                                    <option value="">Pilih Tipe Kamar</option>
+                                                    @foreach($dataTipe as $tipe)
+                                                    <option value="{{ $tipe->id }}" {{ old('id_tipe', isset($reservasi) ? $reservasi->id_tipe : null) == $tipe->id ? 'selected' : '' }}>
+                                                        {{ $tipe->tipe_kamar }}
                                                     </option>
                                                     @endforeach
                                                 </select>
@@ -231,6 +248,7 @@
             </div>
 
             @include('admin/template/script')
+            @include('sweetalert::alert')
 
 </body>
 

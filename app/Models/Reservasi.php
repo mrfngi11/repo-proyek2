@@ -14,6 +14,7 @@ class Reservasi extends Model
     protected $fillable = [
         'id_customer',
         'id_kamar',
+        'id_tipe',
         'jumlah_kucing',
         'check_in',
         'check_out',
@@ -27,5 +28,10 @@ class Reservasi extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'id_customer');
+    }
+
+    public function tipe()
+    {
+        return $this->belongsTo(Tipe::class, 'id_tipe');
     }
 }

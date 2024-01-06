@@ -10,7 +10,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link text-dark" href="index.html">
+        <a class="nav-link text-dark" href="{{ route('home-admin') }}">
             <i class="fas fa-fw fa-home"></i>
             <span>Dashboard</span></a>
     </li>

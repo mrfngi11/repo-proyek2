@@ -86,6 +86,7 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                        {{$dataGrooming->links()}}
                                     </div>
                                 </div>
                             </div>
@@ -258,6 +259,7 @@
     </div>
 
     @include('admin/template/script')
+    @include('sweetalert::alert')
 
 </body>
 

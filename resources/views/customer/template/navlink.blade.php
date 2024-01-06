@@ -17,12 +17,12 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Info</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" href="">
+                        <li><a class="dropdown-item" href="{{ route('pethotel-customer') }}">
                                 <i class="fas fa-hotel fa-sm fa-fw text-primary"></i>
                                 <span>Reservasi</span>
                             </a>
                         </li>
-                        <li><a class="dropdown-item" href="">
+                        <li><a class="dropdown-item" href="{{ route('grooming-customer') }}">
                                 <i class="fas fa-shower fa-sm fa-fw text-primary"></i>
                                 <span>Grooming</span>
                             </a>

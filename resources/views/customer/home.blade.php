@@ -18,11 +18,11 @@
                         <div class="my-5 text-center text-xl-start">
                             <h1 class="display-5 fw-bolder text-dark mb-2">Hachi Petshop Indramayu</h1>
                             <p class="lead fw-normal text-dark-50 mb-4" style="text-align: justify;">Tempat pelayanan terbaik untuk peliharaan kesayangan Anda. Disinilah keahlian, kehangatan, dan kepedulian bertemu, menciptakan lingkungan yang aman dan nyaman bagi mereka.</p>
-                            <a class="btn btn-lg" style="background-color: #FF6701; color: #FFFFFF;" href="#scroll-target" href="#scroll-target">
+                            <a class="btn btn-lg" style="background-color: #FF6701; color: #FFFFFF;" href="{{ route('grooming-customer') }}">
                                 <i class="fas fa-paw"></i>
                                 <span>Grooming</span>
                             </a>
-                            <a class="btn btn-lg" style="background-color: #FF6701; color: #FFFFFF;" href="#scroll-target" href="#scroll-target">
+                            <a class="btn btn-lg" style="background-color: #FF6701; color: #FFFFFF;" href="{{ route('pethotel-customer') }}">
                                 <i class="fas fa-paw"></i>
                                 <span>Pet Hotel</span>
                             </a>
@@ -80,10 +80,8 @@
                     <div class="col-lg-8">
                         <div class="row gx-5 row-cols-1 row-cols-md-2">
                             <div class="col mb-5 h-100">
-                                <h2 class="fw-bolder mb-0">Hachi Pet Shop</h2>
-                                <p class="mb-0">mari mencoba pengalaman baru anda dalam perawatan kucing</p></br>
-                                <p class="mb-0">kalian juga bisa datang ke offline store kami di bawah ini</p></br>
-                                <a class="btn btn-lg" style="background-color: #FF6701; color: #FFFFFF;" href="#scroll-target">view detail</a>
+                                <h2 class="fw-bolder mb-3">Hachi Pet Shop</h2>
+                                <p class="mb-0" style="text-align: justify;">Berikan hewan peliharaan Anda sentuhan istimewa yang layak dengan layanan grooming terbaik dari kami! Kami di Hachi Pet Shop hadir dengan tim ahli yang penuh kasih sayang, siap memberikan perawatan terbaik untuk menjadikan bulu dan kesehatan hewan kesayangan Anda bersinar. Kunjungi kami hari ini dan berikan mereka pengalaman grooming yang menyenangkan!</p>    
                             </div>
                         </div>
                     </div>
@@ -94,6 +92,7 @@
         <section class="py-5" style="background-color: #FCECDD;">
             <div class="container px-5 my-5">
                 <div class="row gx-5 justify-content-center">
+                    <h2 class="text-center mb-3">Lokasi Toko:</h2>
                     <div class="col-lg-8 col-xl-6">
                         <div class="row">
                             <div class="card h-100 d-flex justify-content-center">
@@ -111,6 +110,7 @@
         @include('customer/template/footer')
     </footer>
     @include('customer/template/script')
+    @include('sweetalert::alert')
 </body>
 
 </html>

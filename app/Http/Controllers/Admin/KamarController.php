@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Kamar;
 use Illuminate\Support\Facades\File;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KamarController extends Controller
 {
     public function index()
     {
-        $dataKamar = Kamar::all();
+        $dataKamar = Kamar::paginate(2);
         return view('admin.kamar.index', compact('dataKamar'));
     }
 
@@ -41,10 +42,9 @@ class KamarController extends Controller
         // Create a new user
         $kamar = Kamar::create($data);
 
-
-
         // Redirect to the index page or show a success message
-        return redirect()->route('kamar')->with('success', 'User created successfully');
+        Alert::success('Berhasil!', 'Kamar berhasil ditambahkan!');
+        return redirect()->route('kamar');
     }
 
     public function update(Request $request, Kamar $kamar)
@@ -99,6 +99,7 @@ class KamarController extends Controller
 
 
         // Redirect to the index page or show a success message
+        Alert::success('Sukses!', 'Data Kamar berhasil dihapus!');
         return redirect()->route('kamar')->with('success', 'Kucing deleted successfully');
     }
 }

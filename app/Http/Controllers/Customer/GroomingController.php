@@ -8,16 +8,22 @@ use App\Models\Grooming;
 use App\Models\Kondisi;
 use App\Models\Jenis;
 use App\Models\Layanan;
+use App\Models\Kamar;
 
 class GroomingController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $dataGrooming = Grooming::all();
         $dataKondisi = Kondisi::all();
         $dataJenis = Jenis::all();
         $dataLayanan = Layanan::all();
-        return view('customer.grooming', compact('dataGrooming', 'dataKondisi', 'dataJenis', 'dataLayanan'));
+        $dataKamar = Kamar::all();
+        return view('customer.grooming', compact('dataGrooming', 'dataKondisi', 'dataJenis', 'dataLayanan', 'dataKamar'));
     }
 
     public function detail($id)

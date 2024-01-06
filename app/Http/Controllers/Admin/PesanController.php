@@ -9,6 +9,7 @@ use App\Models\Jenis;
 use App\Models\Pesan;
 use App\Models\User;
 use App\Models\Layanan;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PesanController extends Controller
 {
@@ -16,7 +17,7 @@ class PesanController extends Controller
     {
         $dataKondisi = Kondisi::all();
         $dataJenis = Jenis::all();
-        $dataPesan = Pesan::all();
+        $dataPesan = Pesan::latest()->paginate(3);
         $dataUser = User::all();
         $dataLayanan = Layanan::all();
         return view('admin.informasipesan.index', compact('dataKondisi', 'dataJenis', 'dataPesan', 'dataLayanan', 'dataUser'));
@@ -41,21 +42,28 @@ class PesanController extends Controller
             'id_layanan' => 'required|exists:layanan,id',
             'id_kondisi' => 'nullable|exists:kondisi,id',
             'id_jenis' => 'nullable|exists:jenis,id',
+            'kucing_berat' => 'required|integer|max:20',
         ]);
+
 
         $data['id_customer'] = $request->input('id_customer');
         $data['kucing_nama'] = $request->input('kucing_nama');
         $data['id_layanan'] = $request->input('id_layanan');
         $data['id_kondisi'] = $request->input('id_kondisi');
         $data['id_jenis'] = $request->input('id_jenis');
+        $data['kucing_berat'] = $request->input('kucing_berat');
+
 
         // Create a new user
         $pesan = Pesan::create($data);
 
+
         if (auth()->user()->role->name == 'admin') {
-            return redirect()->route('pesan')->with('success', 'User created successfully');
+            Alert::success('Berhasil!', 'Pesanan berhasil ditambahkan!');
+            return redirect()->route('pesan');
         }else {
-            return redirect()->route('home-customer')->with('success', 'User created successfully');
+            Alert::success('Sukses!', 'Pesan Grooming berhasil!');
+            return redirect()->route('home-customer');
         }
         // Redirect to the index page or show a success message
         
@@ -70,6 +78,7 @@ class PesanController extends Controller
             'kucing_nama' => 'required',
             'id_kondisi' => 'nullable|exists:kondisi,id',
             'id_jenis' => 'nullable|exists:jenis,id',
+            'kucing_berat' => 'required|integer|max:20',
         ]);
 
         // Update data for Pesan model
@@ -78,12 +87,14 @@ class PesanController extends Controller
         $data['id_layanan'] = $request->id_layanan;
         $data['id_kondisi'] = $request->id_kondisi;
         $data['id_jenis'] = $request->id_jenis;
+        $data['kucing_berat'] = $request->kucing_berat;
 
         $pesan->where('id', $pesan->id)->update($data);
 
 
         // Redirect with success message
-        return redirect()->route('pesan')->with('success', 'Kucing and Pesan updated successfully');
+        Alert::success('Berhasil!', 'Data Pesanan berhasil diperbarui!');
+        return redirect()->route('pesan');
     }
 
     public function destroy(Pesan $pesan)
@@ -92,6 +103,7 @@ class PesanController extends Controller
         $pesan->where('id', $pesan->id)->delete();
 
         // Redirect dengan pesan sukses
-        return redirect()->route('pesan')->with('success', 'Kucing and Pesan deleted successfully');
+        Alert::success('Sukses!', 'Data Pesan berhasil dihapus!');
+        return redirect()->route('pesan');
     }
 }

@@ -120,7 +120,36 @@
 
                                         <div class="form-group">
 
-                                        <label for="id_layanan">Layanan</label>
+                                            <label for="kucing_berat">Berat Kucing (Kg)</label>
+
+                                            <input type="number" class="form-control form-control-pesan @error('kucing_berat') is-invalid @enderror" placeholder="Berat Kucing" id="kucing_berat" name="kucing_berat" value="{{ old('kucing_berat') }}" required autocomplete="kucing_berat" autofocus>
+
+                                            @error('kucing_berat')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <label for="keterangan">Keterangan</label>
+
+                                            <select name="keterangan" id="keterangan" class="form-control form-control-pesan">
+                                                @foreach($dataPesan as $pesan)
+                                                <!-- <option value="">Pilih Layanan</option> -->
+                                                @if($pesan->kucing_berat < 10);
+                                                <option value="{{ $pesan->keterangan('Kecil') }}" {{ old('keterangan', isset($dataPesan) ? $pesan->keterangan : null) ? 'selected' : '' }}>
+                                                    {{ $pesan->keterangan }}
+                                                </option>
+                                                @endforeach   
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <label for="id_layanan">Layanan</label>
 
                                             <select name="id_layanan" id="id_layanan" class="form-control form-control-pesan">
                                                 <option value="">Pilih Layanan</option>
@@ -132,7 +161,7 @@
                                             </select>
                                         </div>
 
-                                        <button type="submit" class="btn" style="background-color: #FF6701; color: #FFFFFF;">Tambah Pesan</button>
+                                        <button id="tambah" type="submit" class="btn" style="background-color: #FF6701; color: #FFFFFF;">Tambah Pesan</button>
                                     </form>
                                 </div>
                             </div>
@@ -176,7 +205,7 @@
         </div>
 
         @include('admin/template/script')
-
+        @include('sweetalert::alert')
 </body>
 
 </html>

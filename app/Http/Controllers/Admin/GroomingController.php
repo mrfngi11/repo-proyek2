@@ -6,12 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Grooming;
 use Illuminate\Support\Facades\File;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class GroomingController extends Controller
 {
     public function index()
     {
-        $dataGrooming = Grooming::all();
+        $dataGrooming = Grooming::paginate(2);
         return view('admin.grooming.index', compact('dataGrooming'));
     }
 
@@ -37,7 +38,8 @@ class GroomingController extends Controller
         $kamar = Grooming::create($data);
 
         // Redirect to the index page or show a success message
-        return redirect()->route('grooming')->with('success', 'User created successfully');
+        Alert::success('Berhasil!', 'Grooming berhasil ditambahkan!');
+        return redirect()->route('grooming');
     }
 
     public function update(Request $request, Grooming $grooming)
@@ -90,6 +92,7 @@ class GroomingController extends Controller
 
 
         // Redirect to the index page or show a success message
-        return redirect()->route('grooming')->with('success', 'Kucing deleted successfully');
+        Alert::success('Sukses!', 'Data Grooming berhasil dihapus!');
+        return redirect()->route('grooming');
     }
 }

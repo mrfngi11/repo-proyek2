@@ -32,9 +32,9 @@
                             </div>
 
                             <div class="container">
-                                <div class="row  d-flex justify-content-center">
+                                <div class="row d-flex justify-content-around">
                                     @foreach($dataGrooming as $key => $grooming)
-                                    <div class="col-md-4 mb-4">
+                                    <div class="col-md-5 mb-4">
                                         <div class="card shadow border-0" style="width: 20rem;">
                                             <img src="{{ url('grooming-image'.'/'.$grooming->image) }}" class="card-img-top" style="width: 20rem; height: 16rem; object-fit: cover;">
                                             <div class="card-body">
@@ -65,25 +65,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-4 mb-5">
-                        <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="{{ asset('template/img/galeri-kucing.png') }}" alt="..." />
-                            <div class="card-body p-4">
-                                <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                    <h5 class="card-title mb-3">Hotel Pet</h5>
-                                </a>
-                                <p class="card-text mb-0">Lorem ipsum dolor sit amet.</p>
-                            </div>
-                            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                <div class="d-flex align-items-end justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <button class="btn btn-info">p</button>
-                                    </div>
+
+                <div class="container">
+                    <div class="row">
+                        @foreach($dataKamar as $key => $kamar)
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow border-0" style="width: 20rem;">
+                                <img src="{{ url('kamar-image'.'/'.$kamar->image) }}" class="card-img-top" style="width: 20rem; height: 16rem; object-fit: cover;">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3 py-3">{{$kamar->no_kamar}}</h5>
+                                    <a href="{{ url('customer-pethotel') }}/{{$kamar->id}}" class="btn" style="background-color: #FF6701; color: #FFFFFF;">Detail</a>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
+                </div>
+
         </section>
     </main>
     <!-- Footer-->

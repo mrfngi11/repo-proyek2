@@ -80,6 +80,19 @@
                                             </select>
                                         </div>
 
+                                        <!-- Form fields for editing user data -->
+                                        <div class="form-group">
+                                            <label for="id_tipe">Tipe Kamar</label>
+                                            <select name="id_tipe" id="id_tipe" class="form-control form-control-reservasi">
+                                                <option value="">Pilih Tipe Kamar</option>
+                                                @foreach($dataTipe as $tipe)
+                                                <option value="{{ $tipe->id }}">
+                                                    {{ $tipe->tipe_kamar }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
                                         <div class="form-group">
                                             <label for="jumlah_kucing">Jumlah Kucing</label>
                                             <input type="number" class="form-control form-control-reservasi @error('jumlah_kucing') is-invalid @enderror" placeholder="Jumlah Kucing" id="jumlah_kucing" name="jumlah_kucing" value="{{ old('jumlah_kucing') }}" required autocomplete="jumlah_kucing" autofocus>

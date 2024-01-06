@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Hachi Petshop    </title>
+    <title>Hachi Petshop </title>
     @include('admin/template/head')
 </head>
 
@@ -58,7 +58,10 @@
                                                     <th>Nama Kucing</th>
                                                     <th>Jenis</th>
                                                     <th>Kondisi</th>
+                                                    <th>Berat</th>
+                                                    <th>Keterangan</th>
                                                     <th>Layanan</th>
+                                                    <th>Status</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -69,7 +72,10 @@
                                                     <th>Nama Kucing</th>
                                                     <th>Jenis</th>
                                                     <th>Kondisi</th>
+                                                    <th>Berat</th>
+                                                    <th>Keterangan</th>
                                                     <th>Layanan</th>
+                                                    <th>Status</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </tfoot>
@@ -81,7 +87,10 @@
                                                     <td>{{ $pesan->kucing_nama }}</td>
                                                     <td>{{ optional($pesan->jenis)->jenis_nama }}</td>
                                                     <td>{{ optional($pesan->kondisi)->kondisi_kesehatan }}</td>
+                                                    <td>{{ number_format($pesan->kucing_berat) }} Kg</td>
+                                                    <td>{{ $pesan->keterangan }}</td>
                                                     <td>{{ optional($pesan->layanan)->layanan_nama }}</td>
+                                                    <td>{{ $pesan->status }}</td>
                                                     <td>
                                                         <!-- Edit Icon - Trigger Modal -->
                                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editUserModal{{ $pesan->id }}" data-pesan-id="{{ $pesan->id }}" data-pesan-user="{{ optional($pesan->user)->name }}" data-pesan-jenis="{{ $pesan->jenis }}" data-pesan-kondisi="{{ $pesan->kondisi }}" data-pesan-layanan="{{ optional($pesan->layanan)->layanan_nama }}">
@@ -97,6 +106,7 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                        {{ $dataPesan->links() }}
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +136,7 @@
                                             <!-- Menambahkan hidden input untuk menyimpan id user -->
 
                                             <div class="form-group">
-                                            <label for="id_customer">Customer</label>
+                                                <label for="id_customer">Customer</label>
                                                 <select name="id_customer" id="id_customer" class="form-control form-control-pesan">
                                                     <option value="">Customer</option>
                                                     @foreach($dataUser as $user)
@@ -166,6 +176,20 @@
                                                     </option>
                                                     @endforeach
                                                 </select>
+                                            </div>
+
+                                            <div class="form-group">
+
+                                                <label for="kucing_berat">Berat Kucing (Kg)</label>
+
+                                                <input type="number" class="form-control form-control-pesan" placeholder="Berat Kucing" id="kucing_berat" name="kucing_berat"  value="{{ $pesan->kucing_berat }}" required>
+
+                                                @error('kucing_berat')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+
                                             </div>
 
                                             <div class="form-group">
@@ -250,6 +274,7 @@
             </div>
 
             @include('admin/template/script')
+            @include('sweetalert::alert')
 
 </body>
 

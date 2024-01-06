@@ -19,8 +19,8 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block"></div>
-                    <div class="col-lg-7">
+                    <div class="col-lg-6 d-flex justify-content-end mt-5"><img src="{{ asset('template/img/cat.jpg') }}" style="width: 31rem; height:90%;"></div>
+                    <div class="col-lg-6">
                         <div class="p-5">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>

@@ -89,6 +89,7 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                        {{$dataKamar->links()}}
                                     </div>
                                 </div>
                             </div>
@@ -281,6 +282,7 @@
     </div>
 
     @include('admin/template/script')
+    @include('sweetalert::alert')
 
 </body>
 

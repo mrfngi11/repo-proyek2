@@ -18,7 +18,7 @@
                     <div class="col-xl-10 col-lg-12 col-md-9">
 
                         <!-- Product section-->
-                        <section class="py-2" style="background-color: #FCECDD;">
+                        <section class="py-2" style="background-color: #FFFFFF;">
                             <div class="container px-4 px-lg-5">
 
                                 <div class="row gx-4 gx-lg-5 align-items-top row-cols-2">
@@ -86,35 +86,6 @@
             </div>
         </section>
 
-        <section class="py-5" style="background-color: #FCECDD;">
-            <div class="container px-5 my-5">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-8 col-xl-6">
-                        <div class="text-center">
-                            <h2 class="fw-bolder">Pelayanan Lain:</h2>
-                            <p class="lead fw-normal text-muted mb-5">Coba pelayanan kami yang lain! Kapan lagi memanjakan hewan kesayanganmu kalau bukan di sini</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-4 mb-5">
-                        <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="{{ asset('template/img/galeri-kucing.png') }}" alt="..." />
-                            <div class="card-body p-4">
-                                <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                    <h5 class="card-title mb-3">Hotel Pet</h5>
-                                </a>
-                                <p class="card-text mb-0">Lorem ipsum dolor sit amet.</p>
-                            </div>
-                            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                <div class="d-flex align-items-end justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <button class="btn btn-info">p</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
         </section>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
