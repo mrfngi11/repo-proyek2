@@ -45,17 +45,15 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td class="fs-5">{{ $detail->no_kamar }}</td>
+                                                    <td class="fs-5">{{ optional($info->id_customer)->name }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="fs-6">Deskripsi</td>
                                                     <td class="fs-6">:</td>
-                                                    <td class="fs-6" style="text-align: justify;">{{ $detail->deskripsi }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="fs-6">Harga</td>
                                                     <td class="fs-6">:</td>
-                                                    <td class="fs-6">Rp. {{ number_format($detail->harga) }} / malam</td>
                                                 </tr>
                                             </tbody>
                                             <tfoot>
@@ -70,79 +68,18 @@
                                             </tfoot>
                                         </table>
                                     </div>
-
-                                    <!-- Setengah layar kedua untuk gambar -->
-                                    @if($detail->image)
-                                    <div class="col-md-6 mb-3 mt-5 py-5" style="height: 100%;">
-                                        <img class="card-img-top mb-5 mb-md-0" src="{{ url('kamar-image'.'/'.$detail->image) }}" alt="..." style="width: 25rem;" />
-                                    </div>
-                                    @endif
-
-                                </div>
-                            </div>
                         </section>
 
                     </div>
 
                 </div>
             </div>
-        </section>
-
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Reservasi</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{{ route('reservasi.store') }}" method="POST">
-                                        @csrf
-
-                                        <input type="text" class="form-control" id="id_customer" name="id_customer" value="{{ auth()->id() }}" hidden>
-
-                                        <div class="form-group">
-                                            <label for="id_kamar">Kamar</label>
-                                            <select name="id_kamar" id="id_kamar" class="form-control form-control-reservasi">
-                                                <!-- <option value="">Pilih Kamar</option> -->
-                                                <option value="{{ $detail->id }}">
-                                                    {{ $detail->no_kamar }}
-                                                </option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="jumlah_kucing">Jumlah Kucing</label>
-                                            <input type="number" class="form-control" id="jumlah_kucing" name="jumlah_kucing" required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="check_in">Check In</label>
-                                            <input type="date" class="form-control" id="check_in" name="check_in" required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="check_out">Check Out</label>
-                                            <input type="date" class="form-control" id="check_out" name="check_out" required>
-                                        </div>
-                                        <br>
-
-                                        <button type="submit" class="btn mb-3" style="background-color: #FF6701; color: #FFFFFF;">Reservasi</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        </section>
     </main>
     <!-- Footer-->
     <footer class="py-4 mt-auto" style="background-color: #FF6701;">
         @include('customer/template/footer')
     </footer>
     @include('customer/template/script')
-    @include('sweetalert::alert')
 </body>
 
 </html>

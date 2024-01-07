@@ -41,28 +41,30 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" class="fs-4">Informasi</th>
+                                                    <th scope="col" class="fs-4">{{ $detail->grooming_nama }}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td class="fs-5">Deskripsi</td>
-                                                    <td class="fs-5">:</td>
-                                                    <td class="fs-5">{{ $detail->deskripsi }}</td>
+                                                    <td class="fs-6">Deskripsi :</td>
+                                                    <td class="fs-6">:</td>
+                                                    <td class="fs-6" style="text-align: justify;">{{ $detail->deskripsi }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="fs-5">Harga</td>
-                                                    <td class="fs-5">:</td>
-                                                    <td class="fs-5">Rp. {{ number_format($detail->harga) }}</td>
+                                                    <td class="fs-6">Harga</td>
+                                                    <td class="fs-6">:</td>
+                                                    <td class="fs-6">Rp. 70.000 - 120.000</td>
                                                 </tr>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <td class="py-5">
-                                                        <button type="button" class="btn mx-2" style="background-color: #FF6701; color: #FFFFFF;" data-toggle="modal" data-target="#exampleModal">Pesan</button>
-                                                        <a href="{{ route('grooming-customer') }}">
-                                                            <button type="button" class="btn btn-secondary text-white">Kembali</button>
-                                                        </a>
+                                                    <td class="py-3">
+                                                        <div class="d-flex">
+                                                            <button type="button" class="btn mx-2" style="background-color: #FF6701; color: #FFFFFF;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pesan Sekarang!" data-toggle="modal" data-target="#exampleModal">Pesan</button>
+                                                            <a href="{{ route('grooming-customer') }}">
+                                                                <button type="button" class="btn btn-secondary text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Gamau Pesan?">Kembali</button>
+                                                            </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             </tfoot>
@@ -71,8 +73,8 @@
 
                                     <!-- Setengah layar kedua untuk gambar -->
                                     @if($detail->image)
-                                    <div class="col-md-6 mb-3" style="height: 100%;">
-                                        <img class="card-img-top mb-5 mb-md-0" src="{{ url('grooming-image'.'/'.$detail->image) }}" alt="..." style="width: 25    rem;" />
+                                    <div class="col-md-6 mb-3 d-flex justify-content-center" style="height: 100%;">
+                                        <img class="card-img-top mb-5 mb-md-0" src="{{ url('grooming-image'.'/'.$detail->image) }}" alt="..." style="width: 25rem;" />
                                     </div>
                                     @endif
 
@@ -133,14 +135,25 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="id_layanan">Layanan:</label>
-                                <select name="id_layanan" id="id_layanan" class="form-control form-control-pesan">
-                                    <option value="">Pilih Layanan</option>
-                                    @foreach($dataLayanan as $layanan)
-                                    <option value="{{ $layanan->id }}">
-                                        {{ $layanan->layanan_nama }}
+
+                                <label for="id_jenis">Berat:</label>
+
+                                <input type="number" class="form-control form-control-pesan @error('kucing_berat') is-invalid @enderror" placeholder="Berat Kucing (kg)" id="kucing_berat" name="kucing_berat" value="{{ old('kucing_berat') }}" required autocomplete="kucing_berat" autofocus>
+
+                                @error('kucing_berat')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_grooming">Layanan:</label>
+                                <select name="id_grooming" id="id_grooming" class="form-control form-control-pesan">
+                                    <option value="{{ $detail->id }}">
+                                        {{ $detail->grooming_nama }}
                                     </option>
-                                    @endforeach
                                 </select>
                             </div>
                             <br>

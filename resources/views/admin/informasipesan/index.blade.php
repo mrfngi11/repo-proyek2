@@ -88,8 +88,8 @@
                                                     <td>{{ optional($pesan->jenis)->jenis_nama }}</td>
                                                     <td>{{ optional($pesan->kondisi)->kondisi_kesehatan }}</td>
                                                     <td>{{ number_format($pesan->kucing_berat) }} Kg</td>
-                                                    <td>{{ $pesan->keterangan }}</td>
-                                                    <td>{{ optional($pesan->layanan)->layanan_nama }}</td>
+                                                    <td>Kucing {{ optional($pesan->keterangan)->keterangan_nama }}</td>
+                                                    <td>{{ optional($pesan->grooming)->grooming_nama }}</td>
                                                     <td>{{ $pesan->status }}</td>
                                                     <td>
                                                         <!-- Edit Icon - Trigger Modal -->
@@ -193,12 +193,12 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="id_layanan">Layanan:</label>
-                                                <select name="id_layanan" id="id_layanan" class="form-control form-control-pesan">
+                                                <label for="id_grooming">Layanan:</label>
+                                                <select name="id_grooming" id="id_grooming" class="form-control form-control-pesan">
                                                     <option value="">Pilih Layanan</option>
-                                                    @foreach($dataLayanan as $layanan)
-                                                    <option value="{{ $layanan->id }}" {{ old('id_layanan', isset($pesan) ? $pesan->id_layanan : null) == $layanan->id ? 'selected' : '' }}>
-                                                        {{ $layanan->layanan_nama }}
+                                                    @foreach($dataGrooming as $grooming)
+                                                    <option value="{{ $grooming->id }}" {{ old('id_grooming', isset($pesan) ? $pesan->id_grooming : null) == $grooming->id ? 'selected' : '' }}>
+                                                        {{ $grooming->grooming_nama }}
                                                     </option>
                                                     @endforeach
                                                 </select>

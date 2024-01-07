@@ -20,6 +20,7 @@ class GroomingController extends Controller
     {
         // Validate the request data
         $request->validate([
+            'grooming_nama' => 'required|string|max:255',
             'image' => 'nullable|mimes:png,jpeg,jpg|max:2048',
             'deskripsi' => 'required|string|max:255',
             'harga' => 'required|integer',
@@ -31,6 +32,7 @@ class GroomingController extends Controller
         $image->move(public_path('grooming-image'), $filename);
 
         $data['image'] = $filename;
+        $data['grooming_nama'] = $request->grooming_nama;
         $data['deskripsi'] = $request->deskripsi;
         $data['harga'] = $request->harga;
 
@@ -46,6 +48,7 @@ class GroomingController extends Controller
     {
         // Validate the request data
         $request->validate([
+            'grooming_nama' => 'required|string|max:255',
             'deskripsi' => 'required|string|max:255',
             'harga' => 'required|integer',
         ]);
@@ -72,6 +75,7 @@ class GroomingController extends Controller
             $data['image'] = $filename;
         }
 
+        $data['grooming_nama'] = $request->grooming_nama;
         $data['deskripsi'] = $request->deskripsi;
         $data['harga'] = $request->harga;
 

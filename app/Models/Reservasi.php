@@ -14,10 +14,10 @@ class Reservasi extends Model
     protected $fillable = [
         'id_customer',
         'id_kamar',
-        'id_tipe',
         'jumlah_kucing',
         'check_in',
         'check_out',
+        'total',
     ];
 
     public function kamar()

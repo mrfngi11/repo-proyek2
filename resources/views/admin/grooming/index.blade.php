@@ -46,6 +46,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
+                                                    <th>Nama Grooming</th>
                                                     <th>Image</th>
                                                     <th>Deskripsi</th>
                                                     <th>Harga</th>
@@ -55,6 +56,7 @@
                                             <tfoot>
                                                 <tr>
                                                     <th>#</th>
+                                                    <th>Nama Grooming</th>
                                                     <th>Image</th>
                                                     <th>Deskripsi</th>
                                                     <th>Harga</th>
@@ -65,6 +67,7 @@
                                                 @foreach($dataGrooming as $key => $grooming)
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $grooming->grooming_nama }}</td>
                                                     <td> @if ($grooming->image)
                                                         <img style="max-width: 150px; max-height: 150px;" src="{{ url('grooming-image'.'/'.$grooming->image) }}">
                                                         @endif
@@ -106,6 +109,17 @@
                                         @csrf
 
                                         <div class="form-group">
+                                            <input type="text" class="form-control form-control-grooming @error('grooming_nama') is-invalid @enderror" placeholder="Nama Grooming" id="grooming_nama" name="grooming_nama" value="{{ old('grooming_nama') }}" required autocomplete="grooming_nama" autofocus>
+
+                                            @error('grooming_nama')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+
+                                        </div>
+
+                                        <div class="form-group">
                                             <input type="file" class="form-control form-control-grooming @error('image') is-invalid @enderror" id="image" name="image">
 
                                             @error('image')
@@ -117,7 +131,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                        <textarea class="form-control form-control-grooming @error('deskripsi') is-invalid @enderror" placeholder="Deskripsi" id="deskripsi" name="deskripsi" required autocomplete="deskripsi" autofocus>{{ old('deskripsi') }}</textarea>
+                                            <textarea class="form-control form-control-grooming @error('deskripsi') is-invalid @enderror" placeholder="Deskripsi" id="deskripsi" name="deskripsi" required autocomplete="deskripsi" autofocus>{{ old('deskripsi') }}</textarea>
 
 
                                             @error('deskripsi')
@@ -168,6 +182,11 @@
                                 <form action="{{ route('grooming.update', $grooming->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
+
+                                    <div class="form-group">
+                                        <label for="grooming_nama">Harga</label>
+                                        <input type="text" class="form-control" id="grooming_nama" name="grooming_nama" value="{{ $grooming->grooming_nama }}" required>
+                                    </div>
 
                                     @if($grooming->image)
                                     <div class="form-group">

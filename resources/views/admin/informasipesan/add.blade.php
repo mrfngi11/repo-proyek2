@@ -55,8 +55,6 @@
 
                                         <div class="form-group">
 
-                                            <label for="id_customer">Customer</label>
-
                                             <select name="id_customer" id="id_customer" class="form-control form-control-user">
                                                 <option value="">Customer</option>
                                                 @foreach($dataUser as $user)
@@ -78,8 +76,6 @@
 
                                         <div class="form-group">
 
-                                            <label for="kucing_nama">Nama Kucing</label>
-
                                             <input type="text" class="form-control form-control-pesan @error('kucing_nama') is-invalid @enderror" placeholder="Nama Kucing" id="kucing_nama" name="kucing_nama" value="{{ old('kucing_nama') }}" required autocomplete="kucing_nama" autofocus>
 
                                             @error('kucing_nama')
@@ -91,8 +87,6 @@
                                         </div>
 
                                         <div class="form-group">
-
-                                            <label for="id_kondisi">Kondisi Kucing</label>
 
                                             <select name="id_kondisi" id="id_kondisi" class="form-control form-control-pesan">
                                                 <option value="">Kondisi Kucing</option>
@@ -106,8 +100,6 @@
 
                                         <div class="form-group">
 
-                                            <label for="id_jenis">Jenis Kucing</label>
-
                                             <select name="id_jenis" id="id_jenis" class="form-control form-control-pesan">
                                                 <option value="">Jenis Kucing</option>
                                                 @foreach($dataJenis as $jenis)
@@ -120,9 +112,7 @@
 
                                         <div class="form-group">
 
-                                            <label for="kucing_berat">Berat Kucing (Kg)</label>
-
-                                            <input type="number" class="form-control form-control-pesan @error('kucing_berat') is-invalid @enderror" placeholder="Berat Kucing" id="kucing_berat" name="kucing_berat" value="{{ old('kucing_berat') }}" required autocomplete="kucing_berat" autofocus>
+                                            <input type="number" class="form-control form-control-pesan @error('kucing_berat') is-invalid @enderror" placeholder="Berat Kucing (kg)" id="kucing_berat" name="kucing_berat" value="{{ old('kucing_berat') }}" required autocomplete="kucing_berat" autofocus>
 
                                             @error('kucing_berat')
                                             <span class="invalid-feedback" role="alert">
@@ -134,28 +124,11 @@
 
                                         <div class="form-group">
 
-                                            <label for="keterangan">Keterangan</label>
-
-                                            <select name="keterangan" id="keterangan" class="form-control form-control-pesan">
-                                                @foreach($dataPesan as $pesan)
-                                                <!-- <option value="">Pilih Layanan</option> -->
-                                                @if($pesan->kucing_berat < 10);
-                                                <option value="{{ $pesan->keterangan('Kecil') }}" {{ old('keterangan', isset($dataPesan) ? $pesan->keterangan : null) ? 'selected' : '' }}>
-                                                    {{ $pesan->keterangan }}
-                                                </option>
-                                                @endforeach   
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <label for="id_layanan">Layanan</label>
-
-                                            <select name="id_layanan" id="id_layanan" class="form-control form-control-pesan">
+                                            <select name="id_grooming" id="id_grooming" class="form-control form-control-pesan">
                                                 <option value="">Pilih Layanan</option>
-                                                @foreach($dataLayanan as $layanan)
-                                                <option value="{{ $layanan->id }}" {{ old('id_layanan', isset($pesan) ? $pesan->id_layanan : null) == $layanan->id ? 'selected' : '' }}>
-                                                    {{ $layanan->layanan_nama }}
+                                                @foreach($dataGrooming as $grooming)
+                                                <option value="{{ $grooming->id }}" {{ old('id_grooming', isset($pesan) ? $pesan->id_grooming : null) == $grooming->id ? 'selected' : '' }}>
+                                                    {{ $grooming->grooming_nama }}
                                                 </option>
                                                 @endforeach
                                             </select>

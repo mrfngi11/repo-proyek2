@@ -9,6 +9,7 @@ use App\Models\Kondisi;
 use App\Models\Jenis;
 use App\Models\Layanan;
 use App\Models\Kamar;
+use App\Models\Pesan;
 
 class GroomingController extends Controller
 {
@@ -33,5 +34,18 @@ class GroomingController extends Controller
         $dataLayanan = Layanan::all();
         $detail = Grooming::where('id', $id)->first();
         return view('customer.detailgrooming', compact('detail', 'dataKondisi', 'dataJenis', 'dataLayanan'));
+    }
+
+    public function info($id)
+    {
+        $info = Pesan::where('id', $id)->first();
+
+        return view('customer.infopesan', compact('info'));
+    }
+
+    public function nav($id)
+    {
+        $info = Pesan::where('id_customer', auth()->id())->first();
+        return view('customer.template.navlink', compact('info'));
     }
 }

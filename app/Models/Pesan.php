@@ -13,11 +13,13 @@ class Pesan extends Model
 
     protected $fillable = [
         'id_customer',
-        'id_layanan',
+        'id_grooming',
         'id_kondisi',
         'id_jenis',
+        'id_keterangan',
         'kucing_nama',
         'kucing_berat',
+        'total',
     ];
 
     public function layanan()
@@ -43,5 +45,10 @@ class Pesan extends Model
     public function keterangan()
     {
         return $this->belongsTo(Keterangan::class, 'id_keterangan');
+    }
+
+    public function grooming()
+    {
+        return $this->belongsTo(Grooming::class, 'id_grooming');
     }
 }

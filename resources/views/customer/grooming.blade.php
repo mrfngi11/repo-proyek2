@@ -38,7 +38,8 @@
                                         <div class="card shadow border-0" style="width: 20rem;">
                                             <img src="{{ url('grooming-image'.'/'.$grooming->image) }}" class="card-img-top" style="width: 20rem; height: 16rem; object-fit: cover;">
                                             <div class="card-body">
-                                                <h5 class="card-title mb-3 py-3">{{$grooming->deskripsi}}</h5>
+                                                <h5 class="card-title mb-3 py-3">{{ $grooming->grooming_nama }} <span class="badge bg-info">new</span></h5>
+                                                <p>{{ Str::of($grooming->deskripsi)->words(5) }}</p>
                                                 <a href="{{ url('customer-grooming') }}/{{$grooming->id}}" class="btn" style="background-color: #FF6701; color: #FFFFFF;">Detail</a>
                                             </div>
                                         </div>
@@ -73,7 +74,8 @@
                             <div class="card shadow border-0" style="width: 20rem;">
                                 <img src="{{ url('kamar-image'.'/'.$kamar->image) }}" class="card-img-top" style="width: 20rem; height: 16rem; object-fit: cover;">
                                 <div class="card-body">
-                                    <h5 class="card-title mb-3 py-3">{{$kamar->no_kamar}}</h5>
+                                    <h5 class="card-title mb-3 py-3">Pet Hotel | {{$kamar->no_kamar}} <span class="badge bg-info">new</span></h5>
+                                    <p>{{ Str::of($kamar->deskripsi)->words(5) }}</p>
                                     <a href="{{ url('customer-pethotel') }}/{{$kamar->id}}" class="btn" style="background-color: #FF6701; color: #FFFFFF;">Detail</a>
                                 </div>
                             </div>

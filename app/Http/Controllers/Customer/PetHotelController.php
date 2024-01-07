@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Kamar;
 use App\Models\Grooming;
+use App\Models\Reservasi;
 
 class PetHotelController extends Controller
 {
@@ -24,5 +25,12 @@ class PetHotelController extends Controller
     {
         $detail = Kamar::where('id', $id)->first();
         return view('customer.detailkamar', compact('detail'));
+    }
+
+    public function info($id)
+    {
+        $info = Reservasi::where('id_customer', auth()->id())->latest()->first();
+        return view('customer.inforeservasi', compact('info'));
+        // return view('customer.template.navlink', compact('info'));
     }
 }
